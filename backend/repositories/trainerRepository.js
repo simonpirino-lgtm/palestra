@@ -6,18 +6,18 @@ exports.getAll = async () => {
 };
 
 exports.create = async (trainer) => {
-    const { name, surname, specializzazione } = trainer;
+    const { name, surname, speciality } = trainer;
     await db.query(
-        "INSERT INTO trainer(name,surname,specializzazione) VALUES (?,?,?)",
-        [name, surname, specializzazione]
+        "INSERT INTO trainer(name,surname,speciality) VALUES (?,?,?)",
+        [name, surname, speciality]
     );
 };
 
 exports.update = async (id, trainer) => {
-    const { name, surname, specializzazione } = trainer;
+    const { name, surname, speciality } = trainer;
     await db.query(
-        "UPDATE trainer SET name=?, surname=?, specializzazione=? WHERE id=?",
-        [name, surname, specializzazione, id]
+        "UPDATE trainer SET name=?, surname=?, speciality=? WHERE id=?",
+        [name, surname, speciality, id]
     );
 };
 
