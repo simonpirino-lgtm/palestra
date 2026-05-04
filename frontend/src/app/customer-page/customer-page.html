@@ -1,0 +1,39 @@
+<h2>Gestione Customer</h2>
+
+<h3>Inserisci Nuovo Cliente</h3>
+
+<input [(ngModel)]="newCustomer.name" placeholder="Nome">
+<input [(ngModel)]="newCustomer.surname" placeholder="Cognome">
+<input [(ngModel)]="newCustomer.email" placeholder="Email">
+
+<select [(ngModel)]="newCustomer.trainer_id">
+    <option value="">Seleziona Trainer</option>
+    <option *ngFor="let t of trainers" [value]="t.id">
+        {{t.name}} {{t.surname}}
+    </option>
+</select>
+
+<button (click)="saveCustomer()">Salva</button>
+
+<hr>
+
+<table border="1" align="center">
+  <tr>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Email</th>
+    <th>Trainer Associato</th>
+    <th>Azione</th>
+  </tr>
+
+  <tr *ngFor="let c of customers">
+    <td>{{c.name}}</td>
+    <td>{{c.surname}}</td>
+    <td>{{c.email}}</td>
+    <td>{{c.trainer_name}} {{c.trainer_surname}}</td>
+    <td><button (click)="removeCustomer(c.id)">Elimina</button></td>
+  </tr>
+</table>
+
+<br>
+<a routerLink="/">Home</a>
