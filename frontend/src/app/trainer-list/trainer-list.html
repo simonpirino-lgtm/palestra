@@ -1,20 +1,21 @@
-<h2>Lista Trainer</h2>
+<div class="container">
 
-<table border="1" align="center">
-  <tr>
-    <th>ID</th>
-    <th>Nome</th>
-    <th>Cognome</th>
-    <th>Specializzazione</th>
-  </tr>
+  <h2 class="title">Lista Trainer</h2>
 
-  <tr *ngFor="let t of trainers">
-    <td>{{t.id}}</td>
-    <td>{{t.name}}</td>
-    <td>{{t.surname}}</td>
-    <td>{{t.speciality}}</td>
-  </tr>
-</table>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Cognome</th>
+      <th>Specializzazione</th>
+    </tr>
 
-<br>
-<a routerLink="/">Home</a>
+    <tr *ngFor="let t of trainers">
+      <td>{{t.id}}</td>
+      <td>{{t.name}}</td>
+      <td>{{t.surname}}</td>
+      <td>{{t.speciality}}</td>
+    </tr>
+  </table>
+
+</div>
