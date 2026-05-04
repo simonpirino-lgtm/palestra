@@ -1,12 +1,12 @@
-const { MySQL } = require("mysql2/promise");
+const mysql = require("mysql2/promise");
 
-const pool = MySQL.createPool({
+const pool = mysql.createPool({
   host: "localhost",
   port: Number(process.env.DB_PORT) || 3306,
   user: "root",
   password: "",
   database: "palestra",
-  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false,
+/*   ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: true } : false, */
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
