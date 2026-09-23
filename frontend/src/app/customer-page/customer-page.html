@@ -1,46 +1,101 @@
-<div class="container">
-
-  <h2 class="title">Gestione Customer</h2>
+```html
+<div class="page">
 
   <div class="card">
-    <h3 class="subtitle">Inserisci Nuovo Cliente</h3>
 
-    <div class="form">
-      <input class="form__input" [(ngModel)]="newCustomer.name" placeholder="Nome">
-      <input class="form__input" [(ngModel)]="newCustomer.surname" placeholder="Cognome">
-      <input class="form__input" [(ngModel)]="newCustomer.email" placeholder="Email">
+    <h2>Gestione Customer</h2>
 
-      <select class="form__select" [(ngModel)]="newCustomer.trainer_id">
-        <option value="">Seleziona Trainer</option>
-        <option *ngFor="let t of trainers" [value]="t.id">
-          {{t.name}} {{t.surname}}
-        </option>
-      </select>
+    <div class="customer-layout">
 
-      <button class="btn btn--primary" (click)="saveCustomer()">Salva</button>
+      <!-- ELENCO CUSTOMER A SINISTRA -->
+      <div class="customer-list">
+
+        <h3>Customer presenti</h3>
+
+        <table>
+          <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Trainer</th>
+            <th>Azione</th>
+          </tr>
+
+          <tr *ngFor="let c of customers">
+            <td>{{c.name}}</td>
+            <td>{{c.surname}}</td>
+            <td>{{c.email}}</td>
+            <td>{{c.trainer_name}} {{c.trainer_surname}}</td>
+            <td>
+              <button (click)="removeCustomer(c.id)">Elimina</button>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+
+
+      <!-- CREAZIONE CUSTOMER A DESTRA -->
+      <div class="customer-create">
+
+        <h3>Nuovo Customer</h3>
+
+        <div class="form">
+
+          <input
+            [(ngModel)]="newCustomer.name"
+            placeholder="Nome">
+
+          <input
+            [(ngModel)]="newCustomer.surname"
+            placeholder="Cognome">
+
+          <input
+            [(ngModel)]="newCustomer.email"
+            placeholder="Email">
+
+          <select [(ngModel)]="newCustomer.trainer_id">
+
+            <option value="">
+              Seleziona Trainer
+            </option>
+
+            <option
+              *ngFor="let t of trainers"
+              [value]="t.id">
+
+              {{t.name}} {{t.surname}}
+
+            </option>
+
+          </select>
+
+          <button (click)="saveCustomer()">
+            Salva Customer
+          </button>
+
+        </div>
+
+      </div>
+
     </div>
+
+
+    <div class="nav">
+
+      <a routerLink="/">Home</a>
+
+      <a routerLink="/trainers">
+        Trainer
+      </a>
+
+      <a routerLink="/customers">
+        Customer
+      </a>
+
+    </div>
+
   </div>
 
-  <table class="table">
-    <tr>
-      <th>Nome</th>
-      <th>Cognome</th>
-      <th>Email</th>
-      <th>Trainer</th>
-      <th>Azione</th>
-    </tr>
-
-    <tr *ngFor="let c of customers">
-      <td>{{c.name}}</td>
-      <td>{{c.surname}}</td>
-      <td>{{c.email}}</td>
-      <td>{{c.trainer_name}} {{c.trainer_surname}}</td>
-      <td>
-        <button class="btn btn--danger" (click)="removeCustomer(c.id)">
-          Elimina
-        </button>
-      </td>
-    </tr>
-  </table>
-
 </div>
+```
